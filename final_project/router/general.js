@@ -17,19 +17,15 @@ public_users.get('/',function (req, res) {
 });
 
 // Get book details based on ISBN
-public_users.get('/isbn/:isbn',async function (req, res) {
+public_users.get('/isbn/:isbn',function (req, res) {
     const isbn = req.params.isbn;
-    let filtered_books = books.filter((book) => book.isbn === isbn);
-    res.send(filtered_books);
- });
-  
+    res.send(books[isbn])
+   });
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
-    const isbn = req.params.author;
-    let author_filtered = books.filter((book) => book.author === author);
-    res.send(author_filtered);
-  
-});
+    const author = req.params.author;
+    res.send(books[author])
+   });
 
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
